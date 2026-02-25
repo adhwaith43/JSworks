@@ -173,13 +173,31 @@
 //         console.log('invalid')
 // }
 
-var x=22;
+// var x=22;
 
-// if (x%2==0){
-//     console.log("even")
-// }
-// else{
-//     console.log("odd")
-// }
+// // if (x%2==0){
+// //     console.log("even")
+// // }
+// // else{
+// //     console.log("odd")
+// // }
 
-(x%2==0)?console.log('even'):console.log("odd")
+// (x%2==0)?console.log('even'):console.log("odd")
+
+
+
+// class in javascript
+
+
+class Person{
+    constructor(a,n){
+        this.name=a
+        this.age=n
+    }
+    show(){
+        console.log(`I am ${this.name} and my age is ${this.age}`)
+    }
+}
+
+let p= new Person('adhwaith',22)
+p.show()
