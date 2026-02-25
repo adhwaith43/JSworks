@@ -16,7 +16,8 @@ function check() {
     else if (guess == secretnumber) {
         document.getElementById("result").innerHTML = "Right Guess";
         document.getElementById("score").innerHTML = score;
-        document.body.style.backgroundColor = "green";
+        document.getElementById("b").innerHTML = guess;
+        document.body.style.background = "green";
 
         if (score > highscore) {
             highscore = score;
@@ -39,12 +40,26 @@ function check() {
                 document.getElementById("score").innerHTML = score;
             }
         }
-        else{
+        else {
             document.getElementById("result").innerHTML = "You Lost the game";
-                score--;
+            score--;
             document.getElementById("score").innerHTML = 0;
         }
     }
+
+}
+
+function again() {
+    secretnumber = Math.floor(Math.random() * 20) + 1
+    console.log(secretnumber)
+    score = 20;
+    highscore = 0;
+    document.getElementById("score").innerHTML = score;
+    document.getElementById("result").innerHTML = "Start guessing.....";
+    document.getElementById("b").innerHTML = '?';
+    document.getElementById("g").value="";
+    document.body.style.background = "rgb(45,42,40)";
+
 
 }
 
