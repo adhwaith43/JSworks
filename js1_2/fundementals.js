@@ -189,15 +189,18 @@
 // class in javascript
 
 
-class Person{
-    constructor(a,n){
-        this.name=a
-        this.age=n
-    }
-    show(){
-        console.log(`I am ${this.name} and my age is ${this.age}`)
-    }
-}
+// class Person{
+//     constructor(a,n){
+//         this.name=a
+//         this.age=n
+//     }
+//     show(){
+//         console.log(`I am ${this.name} and my age is ${this.age}`)
+//     }
+// }
 
-let p= new Person('adhwaith',22)
-p.show()
+// let p= new Person('adhwaith',22)
+// p.show()
+
+
+ 
