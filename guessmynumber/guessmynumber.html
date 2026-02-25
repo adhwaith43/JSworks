@@ -14,7 +14,7 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
             rel="stylesheet">
-
+        <script type="text/javascript" src="scripts.js"></script>
         <style>
         body{
             font-family: "Press Start 2P", system-ui;
@@ -45,17 +45,17 @@
             <div class="row mt-5">
                 <div class="col-6 text-center">
                     <input type="text"
-                        class="border:border-5 border-light py-5" style="background-color:rgb(45, 42, 40);">
+                        class="border:border-5 border-light py-5 text-light text-center" style="background-color:rgb(45, 42, 40);" id="g">
                     <br>
-                    <button
+                    <button onclick="check()"
                         class="btn btn-light fs-4 fw-bold p-3 mt-3">Check!</button>
                 </div>
 
                 <div class="col-6 d-flex justify-content-center">
                     <div>
-                    <p>Start guessing.....</p>
+                    <p id="result">Start guessing.....</p>
                     <p> Score: <span id="score"></span></p>
-                    <p> Highscore: <span id="Highscore"></span></p>
+                    <p> Highscore: <span id="Highscore">0</span></p>
                     </div>
                 </div>
 
