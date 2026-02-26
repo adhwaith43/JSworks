@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<title>Todo List</title>
+    <title>Todo List</title>
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
@@ -15,59 +16,68 @@
 <body class="light">
 
 
-<div class="container">
+    <div class="container">
+        <h1 class="title">
 
+            TODO LIST
 
-    <!-- TITLE -->
-    <h1 class="title">
-
-        TODO LIST
-
-    </h1>
+        </h1>
 
 
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
+        <div class="top-bar">
+
+
+            <div class="search-box">
+
+                <input type="text" id="searchInput" placeholder="Search note...">
+
+                <!-- INSERT SEARCH ICON HERE -->
+                <span class="search-icon">🔍</span>
+
+            </div>
 
 
 
-        <!-- SEARCH -->
-        <div class="search-box">
+            <!-- FILTER -->
+            <select id="filterSelect">
 
-            <input
-            type="text"
-            id="searchInput"
-            placeholder="Search note..."
-            >
+                <option value="all">ALL</option>
 
-            <!-- INSERT SEARCH ICON HERE -->
-            <span class="search-icon">🔍</span>
+                <option value="active">Active</option>
+
+                <option value="completed">Completed</option>
+
+            </select>
+
+
+
+            <!-- THEME BUTTON -->
+            <button id="themeToggle">
+
+                <!-- INSERT SUN / MOON ICON HERE -->
+                🌙
+
+            </button>
+
+
 
         </div>
 
 
 
-        <!-- FILTER -->
-        <select id="filterSelect">
-
-            <option value="all">ALL</option>
-
-            <option value="active">Active</option>
-
-            <option value="completed">Completed</option>
-
-        </select>
+        <!-- TASK LIST -->
+        <ul id="taskList"></ul>
 
 
 
-        <!-- THEME BUTTON -->
-        <button id="themeToggle">
+        <!-- EMPTY STATE -->
+        <div id="emptyState">
 
-            <!-- INSERT SUN / MOON ICON HERE -->
-            🌙
+            <img src="icons/Detective-check-footprint 1.svg" width="200" height="200">
 
-        </button>
+
+        </div>
 
 
 
@@ -75,71 +85,51 @@
 
 
 
-    <!-- TASK LIST -->
-    <ul id="taskList"></ul>
+    <!-- FLOATING ADD BUTTON -->
+    <button id="addBtn">
+
+        <!-- INSERT PLUS ICON HERE -->
+
+        +
+
+    </button>
 
 
 
-    <!-- EMPTY STATE -->
-    <div id="emptyState">
-
-    <img src="icons/Detective-check-footprint 1.svg" width="200" height="200">
+    <!-- MODAL -->
+    <div id="modal">
 
 
-    </div>
+        <div class="modal-content">
 
 
-
-</div>
+            <h2>NEW NOTE</h2>
 
 
 
-<!-- FLOATING ADD BUTTON -->
-<button id="addBtn">
-
-    <!-- INSERT PLUS ICON HERE -->
-
-    +
-
-</button>
+            <input type="text" id="taskInput" placeholder="Input your note...">
 
 
 
-<!-- MODAL -->
-<div id="modal">
+            <div class="modal-buttons">
 
 
-    <div class="modal-content">
+                <button id="cancelBtn">
 
+                    CANCEL
 
-        <h2 >NEW NOTE</h2>
-
-
-
-        <input
-        type="text"
-        id="taskInput"
-        placeholder="Input your note..."
-        >
+                </button>
 
 
 
-        <div class="modal-buttons">
+                <button id="applyBtn">
+
+                    APPLY
+
+                </button>
 
 
-            <button id="cancelBtn">
-
-                CANCEL
-
-            </button>
-
-
-
-            <button id="applyBtn">
-
-                APPLY
-
-            </button>
+            </div>
 
 
         </div>
@@ -148,12 +138,10 @@
     </div>
 
 
-</div>
 
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 
 </body>
+
 </html>
