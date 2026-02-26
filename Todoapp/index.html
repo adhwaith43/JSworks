@@ -1,45 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List Prototype</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<title>Todo List</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
 </head>
-<body>
 
-    <div class="container">
-        <header>
-            <h1>TODO LIST</h1>
-        </header>
 
-        <section class="controls">
-            <div class="search-wrapper">
-                <input type="text" id="searchInput" placeholder="Search note...">
-                <span class="search-icon">🔍</span>
-            </div>
+<body class="light">
 
-            <select id="filterSelect">
-                <option value="all">ALL</option>
-                <option value="complete">COMPLETE</option>
-                <option value="incomplete">INCOMPLETE</option>
-            </select>
 
-            <button id="themeToggle" class="theme-btn">🌙</button>
-        </section>
+<div class="container">
 
-        <main id="todoContainer">
-            <div id="emptyState" class="empty-state">
-                <img src="your-illustration-path.png" alt="Empty">
-                <p>Empty...</p>
-            </div>
 
-            <ul id="todoList"></ul>
-        </main>
+    <!-- TITLE -->
+    <h1 class="title">
 
-        <button id="addBtn" class="fab">+</button>
+        TODO LIST
+
+    </h1>
+
+
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+
+
+
+        <!-- SEARCH -->
+        <div class="search-box">
+
+            <input
+            type="text"
+            id="searchInput"
+            placeholder="Search note..."
+            >
+
+            <!-- INSERT SEARCH ICON HERE -->
+            <span class="search-icon">🔍</span>
+
+        </div>
+
+
+
+        <!-- FILTER -->
+        <select id="filterSelect">
+
+            <option value="all">ALL</option>
+
+            <option value="active">Active</option>
+
+            <option value="completed">Completed</option>
+
+        </select>
+
+
+
+        <!-- THEME BUTTON -->
+        <button id="themeToggle">
+
+            <!-- INSERT SUN / MOON ICON HERE -->
+            🌙
+
+        </button>
+
+
+
     </div>
 
-    <script src="script.js"></script>
+
+
+    <!-- TASK LIST -->
+    <ul id="taskList"></ul>
+
+
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState">
+
+        <!-- INSERT EMPTY IMAGE HERE -->
+
+        <p>Empty...</p>
+
+    </div>
+
+
+
+</div>
+
+
+
+<!-- FLOATING ADD BUTTON -->
+<button id="addBtn">
+
+    <!-- INSERT PLUS ICON HERE -->
+
+    +
+
+</button>
+
+
+
+<!-- MODAL -->
+<div id="modal">
+
+
+    <div class="modal-content">
+
+
+        <h2 >NEW NOTE</h2>
+
+
+
+        <input
+        type="text"
+        id="taskInput"
+        placeholder="Input your note..."
+        >
+
+
+
+        <div class="modal-buttons">
+
+
+            <button id="cancelBtn">
+
+                CANCEL
+
+            </button>
+
+
+
+            <button id="applyBtn">
+
+                APPLY
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
 </body>
 </html>

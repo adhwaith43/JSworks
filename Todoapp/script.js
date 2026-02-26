@@ -1,66 +1,253 @@
-// 1. OUR DATA (The Notebook)
-// We start with an empty list.
-let todoList = [];
 
-// 2. SELECTING ELEMENTS
-// We tell the Manager which parts of the HTML to watch.
-const input = document.getElementById('searchInput');
-const addBtn = document.getElementById('addBtn');
-const listContainer = document.getElementById('todoList');
-const emptyState = document.getElementById('emptyState');
+let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
 
-// 3. THE "ADD" LOGIC
-function addTask() {
-    const taskText = input.value;
+let editIndex=null;
 
-    if (taskText !== "") {
-        // Create a new task object
-        const newTask = {
-            id: Date.now(), // Unique ID using the current time
-            text: taskText,
-            completed: false
-        };
 
-        // Add it to our "Notebook"
-        todoList.push(newTask);
-        
-        // Clear the input field
-        input.value = "";
-        
-        // Tell the Secretary to update the screen
-        renderTasks();
-    } else {
-        alert("Type something first!");
-    }
+
+function saveTasks(){
+
+localStorage.setItem("tasks",JSON.stringify(tasks));
+
 }
 
-// 4. THE "SECRETARY" (The Render Function)
-// This function wipes the screen and redraws the list based on the Array.
-function renderTasks() {
-    // Clear the current list on screen
-    listContainer.innerHTML = "";
 
-    // If list is empty, show the "Empty" illustration
-    if (todoList.length === 0) {
-        emptyState.style.display = "block";
-    } else {
-        emptyState.style.display = "none";
-        
-        // Draw each task from the Array onto the screen
-        todoList.forEach(task => {
-            const li = document.createElement('li');
-            li.className = 'todo-item';
-            li.innerHTML = `
-                <input type="checkbox" ${task.completed ? 'checked' : ''}>
-                <span style="${task.completed ? 'text-decoration: line-through; opacity: 0.5;' : ''}">
-                    ${task.text}
-                </span>
-            `;
-            listContainer.appendChild(li);
-        });
-    }
+
+function renderTasks(){
+
+let list=document.getElementById("taskList");
+
+let empty=document.getElementById("emptyState");
+
+let search=document.getElementById("searchInput").value.toLowerCase();
+
+let filter=document.getElementById("filterSelect").value;
+
+
+list.innerHTML="";
+
+
+let filtered=tasks.filter(task=>{
+
+if(filter=="active")return !task.completed;
+
+if(filter=="completed")return task.completed;
+
+return true;
+
+}).filter(task=>task.text.toLowerCase().includes(search));
+
+
+empty.style.display=filtered.length?"none":"block";
+
+
+filtered.forEach((task,index)=>{
+
+
+let li=document.createElement("li");
+
+
+
+let left=document.createElement("div");
+
+left.className="task-left";
+
+
+
+let checkbox=document.createElement("input");
+
+checkbox.type="checkbox";
+
+checkbox.checked=task.completed;
+
+
+checkbox.onchange=()=>{
+
+task.completed=!task.completed;
+
+saveTasks();
+
+renderTasks();
+
+};
+
+
+
+let text=document.createElement("span");
+
+text.innerText=task.text;
+
+if(task.completed)text.classList.add("completed");
+
+
+left.append(checkbox,text);
+
+
+
+let right=document.createElement("div");
+
+right.className="task-right";
+
+
+
+// EDIT BUTTON
+
+let edit=document.createElement("span");
+
+edit.className="icon-btn edit-btn";
+
+/*
+INSERT EDIT ICON HERE
+
+Example:
+
+edit.innerHTML = `<img src="icons/edit.svg">`;
+
+*/
+
+edit.onclick=()=>{
+
+editIndex=index;
+
+openModal(task.text);
+
+};
+
+
+
+
+// DELETE BUTTON
+
+let del=document.createElement("span");
+
+del.className="icon-btn delete-btn";
+
+/*
+INSERT DELETE ICON HERE
+
+Example:
+
+del.innerHTML = `<img src="icons/delete.svg">`;
+
+*/
+
+del.onclick=()=>{
+
+tasks.splice(index,1);
+
+saveTasks();
+
+renderTasks();
+
+};
+
+
+
+right.append(edit,del);
+
+
+li.append(left,right);
+
+list.append(li);
+
+
+});
+
 }
 
-// 5. THE "LISTENER"
-// Tell the Manager: "When the plus button is clicked, run addTask"
-addBtn.addEventListener('click', addTask);
+
+function openModal(text=""){
+
+let modal=document.getElementById("modal");
+
+modal.style.display="flex";
+
+setTimeout(()=>{
+
+modal.classList.add("show");
+
+},10);
+
+
+// Fix: ensure PointerEvent never goes into input
+
+if(typeof text === "string")
+
+document.getElementById("taskInput").value=text;
+
+else
+
+document.getElementById("taskInput").value="";
+
+}
+
+
+
+function closeModal(){
+
+let modal=document.getElementById("modal");
+
+modal.classList.remove("show");
+
+setTimeout(()=>{
+
+modal.style.display="none";
+
+},200);
+
+editIndex=null;
+
+}
+
+
+
+document.getElementById("applyBtn").onclick=()=>{
+
+let value=document.getElementById("taskInput").value.trim();
+
+if(!value)return alert("Empty not allowed");
+
+if(editIndex!=null)
+
+tasks[editIndex].text=value;
+
+else
+
+tasks.push({text:value,completed:false});
+
+saveTasks();
+
+renderTasks();
+
+closeModal();
+
+};
+
+
+
+document.getElementById("cancelBtn").onclick=closeModal;
+
+document.getElementById("addBtn").onclick = () => openModal();
+
+document.getElementById("searchInput").oninput=renderTasks;
+
+document.getElementById("filterSelect").onchange=renderTasks;
+
+
+
+document.getElementById("themeToggle").onclick=()=>{
+
+document.body.classList.toggle("dark");
+
+document.body.classList.toggle("light");
+
+localStorage.setItem("theme",document.body.className);
+
+};
+
+
+
+document.body.className=localStorage.getItem("theme")||"light";
+
+
+renderTasks();
