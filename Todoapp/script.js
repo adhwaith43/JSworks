@@ -8,7 +8,6 @@ let editIndex = null;
 function saveTasks() {
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
-
 }
 
 
@@ -43,10 +42,7 @@ function renderTasks() {
 
     filtered.forEach((task, index) => {
 
-
         let li = document.createElement("li");
-
-
 
         let left = document.createElement("div");
 
@@ -81,7 +77,6 @@ function renderTasks() {
 
 
         left.append(checkbox, text);
-
 
 
         let right = document.createElement("div");
@@ -153,9 +148,6 @@ function openModal(text = "") {
         modal.classList.add("show");
 
     }, 10);
-
-
-    // Fix: ensure PointerEvent never goes into input
 
     if (typeof text === "string")
 
@@ -230,8 +222,6 @@ document.getElementById("themeToggle").onclick = () => {
     localStorage.setItem("theme", document.body.className);
 
 };
-
-
 
 document.body.className = localStorage.getItem("theme") || "light";
 

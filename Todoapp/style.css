@@ -25,7 +25,6 @@ color:var(--dark-text);
 }
 
 
-/* CONTAINER */
 
 .container{
 width:580px;
@@ -33,7 +32,6 @@ margin:60px auto 0;
 }
 
 
-/* TITLE */
 
 .title{
 text-align:center;
@@ -44,7 +42,6 @@ letter-spacing:1px;
 }
 
 
-/* TOP BAR */
 
 .top-bar{
 display:flex;
@@ -55,11 +52,10 @@ margin-top:25px;
 }
 
 
-/* SEARCH */
 
 .search-box{
 position:relative;
-width:420px;   /* fixed width to match figma */
+width:420px;   
 }
 
 .search-box input{
@@ -83,7 +79,6 @@ color:var(--primary);
 }
 
 
-/* FILTER */
 
 #filterSelect{
     
@@ -102,8 +97,7 @@ appearance:none;
 background-image:url("data:image/svg+xml;utf8,<svg fill='white' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
 background-repeat:no-repeat;
 background-position:right 10px center;
-min-width:90px;   /* important */
-
+min-width:90px;   
 }
 
 #filterSelect option{
@@ -112,7 +106,6 @@ color:var(--primary);
 }
 
 
-/* THEME BUTTON */
 
 #themeToggle{
 width:40px;
@@ -128,7 +121,6 @@ justify-content:center;
 }
 
 
-/* TASK LIST */
 
 ul{
 margin-top:20px;
@@ -160,9 +152,6 @@ text-decoration:line-through;
 opacity:0.5;
 }
 
-
-/* CHECKBOX */
-
 .task-left input{
 appearance:none;
 -webkit-appearance:none;
@@ -190,7 +179,6 @@ transform:rotate(45deg);
 }
 
 
-/* RIGHT ICONS */
 
 .task-right{
 display:flex;
@@ -213,7 +201,6 @@ transform:scale(1.2);
 }
 
 
-/* EMPTY */
 
 #emptyState{
 text-align:center;
@@ -222,7 +209,6 @@ opacity:.6;
 }
 
 
-/* FLOAT BUTTON */
 
 #addBtn{
 position:fixed;
@@ -247,7 +233,6 @@ transform:scale(1.1);
 }
 
 
-/* MODAL */
 
 #modal{
 position:fixed;
