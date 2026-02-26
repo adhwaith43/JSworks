@@ -1,0 +1,104 @@
+:root {
+  --primary: #6C63FF;      /* The Purple from your palette */
+  --bg-light: #F7F7F7;     /* Light background */
+  --bg-dark: #252525;      /* Dark background */
+  --text-light: #252525;
+  --text-dark: #FFFFFF;
+  --border: #6C63FF;
+  --transition: all 0.3s ease;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  transition: var(--transition);
+}
+
+/* Container & Search Bar */
+.container {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  outline: none;
+}
+
+/* Select Dropdown & Buttons */
+select, .theme-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Floating Action Button (FAB) */
+.fab {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 30px;
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #6C63FF55; /* Light purple line */
+    gap: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Custom Checkbox Color */
+input[type="checkbox"] {
+    accent-color: var(--primary);
+    width: 20px;
+    height: 20px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Prototype</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>TODO LIST</h1>
+        </header>
+
+        <section class="controls">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search note...">
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <select id="filterSelect">
+                <option value="all">ALL</option>
+                <option value="complete">COMPLETE</option>
+                <option value="incomplete">INCOMPLETE</option>
+            </select>
+
+            <button id="themeToggle" class="theme-btn">🌙</button>
+        </section>
+
+        <main id="todoContainer">
+            <div id="emptyState" class="empty-state">
+                <img src="your-illustration-path.png" alt="Empty">
+                <p>Empty...</p>
+            </div>
+
+            <ul id="todoList"></ul>
+        </main>
+
+        <button id="addBtn" class="fab">+</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
