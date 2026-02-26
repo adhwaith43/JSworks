@@ -1,253 +1,239 @@
 
-let tasks=JSON.parse(localStorage.getItem("tasks"))||[];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-let editIndex=null;
+let editIndex = null;
 
 
 
-function saveTasks(){
+function saveTasks() {
 
-localStorage.setItem("tasks",JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 
 }
 
 
 
-function renderTasks(){
+function renderTasks() {
 
-let list=document.getElementById("taskList");
+    let list = document.getElementById("taskList");
 
-let empty=document.getElementById("emptyState");
+    let empty = document.getElementById("emptyState");
 
-let search=document.getElementById("searchInput").value.toLowerCase();
+    let search = document.getElementById("searchInput").value.toLowerCase();
 
-let filter=document.getElementById("filterSelect").value;
+    let filter = document.getElementById("filterSelect").value;
 
 
-list.innerHTML="";
+    list.innerHTML = "";
 
 
-let filtered=tasks.filter(task=>{
+    let filtered = tasks.filter(task => {
 
-if(filter=="active")return !task.completed;
+        if (filter == "active") return !task.completed;
 
-if(filter=="completed")return task.completed;
+        if (filter == "completed") return task.completed;
 
-return true;
+        return true;
 
-}).filter(task=>task.text.toLowerCase().includes(search));
+    }).filter(task => task.text.toLowerCase().includes(search));
 
 
-empty.style.display=filtered.length?"none":"block";
+    empty.style.display = filtered.length ? "none" : "block";
 
 
-filtered.forEach((task,index)=>{
+    filtered.forEach((task, index) => {
 
 
-let li=document.createElement("li");
+        let li = document.createElement("li");
 
 
 
-let left=document.createElement("div");
+        let left = document.createElement("div");
 
-left.className="task-left";
+        left.className = "task-left";
 
 
 
-let checkbox=document.createElement("input");
+        let checkbox = document.createElement("input");
 
-checkbox.type="checkbox";
+        checkbox.type = "checkbox";
 
-checkbox.checked=task.completed;
+        checkbox.checked = task.completed;
 
 
-checkbox.onchange=()=>{
+        checkbox.onchange = () => {
 
-task.completed=!task.completed;
+            task.completed = !task.completed;
 
-saveTasks();
+            saveTasks();
 
-renderTasks();
+            renderTasks();
 
-};
+        };
 
 
 
-let text=document.createElement("span");
+        let text = document.createElement("span");
 
-text.innerText=task.text;
+        text.innerText = task.text;
 
-if(task.completed)text.classList.add("completed");
+        if (task.completed) text.classList.add("completed");
 
 
-left.append(checkbox,text);
+        left.append(checkbox, text);
 
 
 
-let right=document.createElement("div");
+        let right = document.createElement("div");
 
-right.className="task-right";
+        right.className = "task-right";
 
 
 
-// EDIT BUTTON
+        // EDIT BUTTON
 
-let edit=document.createElement("span");
+        let edit = document.createElement("span");
 
-edit.className="icon-btn edit-btn";
+        edit.className = "icon-btn";
 
-/*
-INSERT EDIT ICON HERE
+        edit.innerHTML = `<img src="icons/Frame 6.svg">`;
 
-Example:
+        edit.onclick = () => {
 
-edit.innerHTML = `<img src="icons/edit.svg">`;
+            editIndex = index;
 
-*/
+            openModal(task.text);
 
-edit.onclick=()=>{
+        };
 
-editIndex=index;
 
-openModal(task.text);
 
-};
 
+        // DELETE BUTTON
 
+        let del = document.createElement("span");
 
+        del.className = "icon-btn";
 
-// DELETE BUTTON
+        del.innerHTML = `<img src="icons/trash-svgrepo-com 1.svg">`;
 
-let del=document.createElement("span");
+        del.onclick = () => {
 
-del.className="icon-btn delete-btn";
+            tasks.splice(index, 1);
 
-/*
-INSERT DELETE ICON HERE
+            saveTasks();
 
-Example:
+            renderTasks();
 
-del.innerHTML = `<img src="icons/delete.svg">`;
+        };
 
-*/
 
-del.onclick=()=>{
 
-tasks.splice(index,1);
+        right.append(edit, del);
 
-saveTasks();
 
-renderTasks();
+        li.append(left, right);
 
-};
+        list.append(li);
 
 
-
-right.append(edit,del);
-
-
-li.append(left,right);
-
-list.append(li);
-
-
-});
+    });
 
 }
 
 
-function openModal(text=""){
+function openModal(text = "") {
 
-let modal=document.getElementById("modal");
+    let modal = document.getElementById("modal");
 
-modal.style.display="flex";
+    modal.style.display = "flex";
 
-setTimeout(()=>{
+    setTimeout(() => {
 
-modal.classList.add("show");
+        modal.classList.add("show");
 
-},10);
+    }, 10);
 
 
-// Fix: ensure PointerEvent never goes into input
+    // Fix: ensure PointerEvent never goes into input
 
-if(typeof text === "string")
+    if (typeof text === "string")
 
-document.getElementById("taskInput").value=text;
+        document.getElementById("taskInput").value = text;
 
-else
+    else
 
-document.getElementById("taskInput").value="";
+        document.getElementById("taskInput").value = "";
 
 }
 
 
 
-function closeModal(){
+function closeModal() {
 
-let modal=document.getElementById("modal");
+    let modal = document.getElementById("modal");
 
-modal.classList.remove("show");
+    modal.classList.remove("show");
 
-setTimeout(()=>{
+    setTimeout(() => {
 
-modal.style.display="none";
+        modal.style.display = "none";
 
-},200);
+    }, 200);
 
-editIndex=null;
+    editIndex = null;
 
 }
 
 
 
-document.getElementById("applyBtn").onclick=()=>{
+document.getElementById("applyBtn").onclick = () => {
 
-let value=document.getElementById("taskInput").value.trim();
+    let value = document.getElementById("taskInput").value.trim();
 
-if(!value)return alert("Empty not allowed");
+    if (!value) return alert("Empty not allowed");
 
-if(editIndex!=null)
+    if (editIndex != null)
 
-tasks[editIndex].text=value;
+        tasks[editIndex].text = value;
 
-else
+    else
 
-tasks.push({text:value,completed:false});
+        tasks.push({ text: value, completed: false });
 
-saveTasks();
+    saveTasks();
 
-renderTasks();
+    renderTasks();
 
-closeModal();
+    closeModal();
 
 };
 
 
 
-document.getElementById("cancelBtn").onclick=closeModal;
+document.getElementById("cancelBtn").onclick = closeModal;
 
 document.getElementById("addBtn").onclick = () => openModal();
 
-document.getElementById("searchInput").oninput=renderTasks;
+document.getElementById("searchInput").oninput = renderTasks;
 
-document.getElementById("filterSelect").onchange=renderTasks;
+document.getElementById("filterSelect").onchange = renderTasks;
 
 
 
-document.getElementById("themeToggle").onclick=()=>{
+document.getElementById("themeToggle").onclick = () => {
 
-document.body.classList.toggle("dark");
+    document.body.classList.toggle("dark");
 
-document.body.classList.toggle("light");
+    document.body.classList.toggle("light");
 
-localStorage.setItem("theme",document.body.className);
+    localStorage.setItem("theme", document.body.className);
 
 };
 
 
 
-document.body.className=localStorage.getItem("theme")||"light";
+document.body.className = localStorage.getItem("theme") || "light";
 
 
 renderTasks();
