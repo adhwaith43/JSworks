@@ -27,10 +27,14 @@ color:var(--dark-text);
 
 
 .container{
-width:580px;
-margin:60px auto 0;
-}
 
+width: 580px;
+
+margin: 60px auto 0 auto;
+
+position: relative;   /* IMPORTANT */
+
+}
 
 
 .title{
@@ -203,9 +207,23 @@ transform:scale(1.2);
 
 
 #emptyState{
-text-align:center;
-margin-top:80px;
-opacity:.6;
+
+display: none;
+
+position: absolute;
+
+top: 35%;
+
+left: 50%;
+
+transform: translate(-50%, -50%);
+
+text-align: center;
+
+width: 100%;
+
+pointer-events: none;
+
 }
 
 
