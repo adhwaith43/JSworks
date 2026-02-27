@@ -321,3 +321,12 @@ color:white;
 #applyBtn:hover{
 opacity:.9;
 }
+
+.task-container{
+
+max-height:300px;  
+overflow-y:auto;    
+margin-top:10px;
+padding-right:5px;
+
+}
