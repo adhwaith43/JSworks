@@ -205,23 +205,15 @@ transform:scale(1.2);
 }
 
 
-
+/* fixed for positioning the image a bit more up */
 #emptyState{
-
 display: none;
-
 position: absolute;
-
 top: 35%;
-
 left: 50%;
-
 transform: translate(-50%, -50%);
-
 text-align: center;
-
 width: 100%;
-
 pointer-events: none;
 
 }
