@@ -3,7 +3,9 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 let editIndex = null;
 
-
+let lastDeletedTask = null; ///undo
+let lastDeletedIndex = null; ///undo
+let undoTimeout = null;//undo
 
 function saveTasks() {
 
@@ -57,13 +59,33 @@ function renderTasks() {
         checkbox.checked = task.completed;
 
 
+        // checkbox.onchange = () => {
+
+        //     task.completed = !task.completed;
+
+        //     saveTasks();
+
+        //     renderTasks();
+
+        // };
+
         checkbox.onchange = () => {
+
+            // store old state
+            let wasCompleted = task.completed;
 
             task.completed = !task.completed;
 
             saveTasks();
 
             renderTasks();
+
+            // trigger confetti ONLY when changing from false → true
+            if(!wasCompleted && task.completed){
+
+                fireConfetti();
+
+            }
 
         };
 
@@ -112,16 +134,35 @@ function renderTasks() {
 
         del.innerHTML = `<img src="icons/trash-svgrepo-com 1.svg">`;
 
+        // del.onclick = () => {
+
+        //     tasks.splice(index, 1);
+
+        //     saveTasks();
+
+        //     renderTasks();
+
+        // };
+
+
+        //added undo button code
         del.onclick = () => {
 
-            tasks.splice(index, 1);
+        // store deleted task
+        lastDeletedTask = tasks[index];
 
-            saveTasks();
+        lastDeletedIndex = index;
 
-            renderTasks();
+        // remove from array
+        tasks.splice(index, 1);
 
-        };
+        saveTasks();
 
+        renderTasks();
+
+        showUndo();
+
+    };
 
 
         right.append(edit, del);
@@ -232,3 +273,142 @@ document.body.className = localStorage.getItem("theme") || "light";
 
 
 renderTasks();
+
+/////////////// confetti//////////////
+
+function fireConfetti(){
+
+    const duration = 800;
+
+    const animationEnd = Date.now() + duration;
+
+    const defaults = {
+
+        startVelocity: 30,
+
+        spread: 360,
+
+        ticks: 60,
+
+        zIndex: 1000
+
+    };
+
+
+    function randomInRange(min, max){
+
+        return Math.random() * (max - min) + min;
+
+    }
+
+
+    const interval = setInterval(function(){
+
+        const timeLeft = animationEnd - Date.now();
+
+        if(timeLeft <= 0){
+
+            return clearInterval(interval);
+
+        }
+
+
+        const particleCount = 50 * (timeLeft / duration);
+
+
+        // left side
+
+        confetti({
+
+            ...defaults,
+
+            particleCount,
+
+            origin: {
+
+                x: randomInRange(0.1, 0.3),
+
+                y: Math.random() - 0.2
+
+            }
+
+        });
+
+
+        // right side
+
+        confetti({
+
+            ...defaults,
+
+            particleCount,
+
+            origin: {
+
+                x: randomInRange(0.7, 0.9),
+
+                y: Math.random() - 0.2
+
+            }
+
+        });
+
+    }, 200);
+
+}
+
+ ////////////undo logic/////////
+function showUndo(){
+
+    const undoBtn = document.getElementById("undoBtn");
+
+    undoBtn.style.display = "block";
+
+
+    // clear previous timer if exists
+
+    if(undoTimeout){
+
+        clearTimeout(undoTimeout);
+
+    }
+
+
+    // hide after 5 seconds
+
+    undoTimeout = setTimeout(()=>{
+
+        undoBtn.style.display = "none";
+
+        lastDeletedTask = null;
+
+        lastDeletedIndex = null;
+
+    }, 5000);
+
+}
+
+
+//////undo click logic///////
+
+document.getElementById("undoBtn").onclick = () => {
+
+    if(lastDeletedTask !== null){
+
+        tasks.splice(lastDeletedIndex, 0, lastDeletedTask);
+
+        saveTasks();
+
+        renderTasks();
+
+        lastDeletedTask = null;
+
+        lastDeletedIndex = null;
+
+        document.getElementById("undoBtn").style.display = "none";
+
+        clearTimeout(undoTimeout);
+
+    }
+
+};

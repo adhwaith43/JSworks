@@ -330,3 +330,28 @@ margin-top:10px;
 padding-right:5px;
 
 }
+
+/* undo button styling */
+#undoBtn{
+
+position: fixed;
+bottom: 120px;
+right: 60px;
+width: 55px;
+height: 55px;
+border-radius: 50%;
+border: none;
+background: var(--primary);
+color: white;
+font-size: 26px;
+display: none;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#undoBtn:hover{
+
+transform: scale(1.1);
+}
