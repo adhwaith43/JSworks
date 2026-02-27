@@ -14,13 +14,13 @@ function saveTasks() {
 
 function renderTasks() {
 
-    let list = document.getElementById("taskList");
+    let list = document.getElementById("taskList");  //getting the element tasklist(ul)
 
-    let empty = document.getElementById("emptyState");
+    let empty = document.getElementById("emptyState"); //for getting the empty state element
 
-    let search = document.getElementById("searchInput").value.toLowerCase();
+    let search = document.getElementById("searchInput").value.toLowerCase(); //for getting the input searched by the user
 
-    let filter = document.getElementById("filterSelect").value;
+    let filter = document.getElementById("filterSelect").value;  //for getting the options in filter(all,completed,active)
 
 
     list.innerHTML = "";
@@ -37,7 +37,7 @@ function renderTasks() {
     }).filter(task => task.text.toLowerCase().includes(search));
 
 
-    empty.style.display = filtered.length ? "none" : "block";
+    empty.style.display = filtered.length ? "none" : "block"; //none--display the image else--dont
 
 
     filtered.forEach((task, index) => {
@@ -149,13 +149,8 @@ function openModal(text = "") {
 
     }, 10);
 
-    if (typeof text === "string")
 
-        document.getElementById("taskInput").value = text;
-
-    else
-
-        document.getElementById("taskInput").value = "";
+    document.getElementById("taskInput").value = text;
 
 }
 
@@ -200,6 +195,16 @@ document.getElementById("applyBtn").onclick = () => {
     closeModal();
 
 };
+
+document.getElementById("taskInput").addEventListener("keypress", function(event){
+
+if(event.key === "Enter"){
+
+document.getElementById("applyBtn").click();
+
+}
+
+});
 
 
 
