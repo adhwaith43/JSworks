@@ -2,29 +2,26 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Navbar from './components/Navbar'
+import Profile from './components/Profile'
+import Footer from './components/Footer'
+import Skills from './components/Skills'
+import About from './components/About'
+import Projects from './components/Projects'
 import Education from './components/Education'
 
 function App() {
   const [count, setCount] = useState(0)
 
-  console.log("Count: ", count)
-
-  const handleCount = () => {
-    setCount(count + 1)
-  }
-
   return (
     <>
-    <button onClick={handleCount}> + </button>
-    <div>{count}</div>
-      {/* <Navbar/>
+      <Navbar/>
       <Profile/>
       <About/>
       <Skills/>
       <Projects/>
       <Education/>
-      <Footer/> */}
-
+      <Footer/>
     </>
   )
 }
