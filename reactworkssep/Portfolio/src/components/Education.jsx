@@ -1,6 +1,13 @@
 import React from 'react'
 
 function Education() {
+  let q=[
+    {"course":"Btech",'Uni':"MG","Aggregrate":'85%'},
+    {"course":"Mtech",'Uni':"MG","Aggregrate":'80%'}
+  ]
+
+  //array of objects
+
   return (
     <div class="container-fluid bg-light mt-5 p-5">
       <h4 class="text-center">Qualifications</h4>
@@ -10,16 +17,11 @@ function Education() {
           <th>Institution</th>
           <th>Year</th>
         </tr>
-        <tr>
-          <td>Bachelor of Science in Computer Science</td>
-          <td>University of Example</td>
-          <td>2015-2019</td>
-        </tr>
-        <tr>
-          <td>Master of Science in Software Engineering</td>
-          <td>Example State University</td>
-          <td>2019-2021</td>
-        </tr>
+        {q.map((i)=><tr>
+          <td>{i.course}</td>
+          <td>{i.Uni}</td>
+          <td>{i.Aggregrate}</td>
+           </tr>)}
       </table>
     </div>
   )
