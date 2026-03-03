@@ -10,6 +10,9 @@ function About() {
     phone:'123-456-7890'
   }   //javascript object
 
+  //map()
+  //arrow function
+
   return (
     <div>
       <div class="container-fluid bg-light mt-5 p-5">
