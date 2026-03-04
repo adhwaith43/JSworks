@@ -3,46 +3,56 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() 
-{
+function App() {
+  const [num1, setNum1] = useState('')
+  const [num2, setNum2] = useState('')
+  const [result, setResult] = useState('')
 
-  const[num1,setnum1]=useState('')
-  const[num2,setnum2]=useState('')
-  const[num3,setnum3]=useState('')
+
+  function input1(event){
+    setNum1(event.target.value)
+  }
+
+  function input2(event){
+    setNum2(event.target.value)
+  }
+
+
 
   function add(){
-    console.log('add')
+    setResult(Number(num1)+Number(num2))
   }
-  function sub(){
-    console.log('add')
+  function subtract(){
+    setResult(num1-num2)
   }
-  function mul(){
-    console.log('add')
+  function multiply(){
+    setResult(num1*num2)
   }
-  function division(){
-    console.log('add')
+  function divide(){
+    setResult(num1/num2)
   }
+  
+
 
   return (
     <>
       <div className="container mt-5 w-25 p-5 border border-2 rounded">
         <h1 className='text-center'>Arithmetic Calculator</h1>
-        <input type="text" className="mt-3 form-control" value="" placeholder="Enter a number"/>
+        <input type="text" className="mt-3 form-control" placeholder='enter a number' onChange={input1}/>
         <br />
-        <input type="text" className="mt-3 form-control" value="" placeholder="Enter another number"/>
+        <input type="text" className="mt-3 form-control" placeholder='enter a number' onChange={input2}/>
         <div className="mt-5 d-flex justify-content-between">
         <button className="btn btn-dark" onClick={add}>+</button>
-        <button className="btn btn-primary" onClick={subtract}>-</button>
-        <button className="btn btn-secondary" onClick={multiply}>*</button>
-        <button className="btn btn-danger" onClick={divide}>/</button>
+        <button className="btn btn-primary" onClick={subtract} >-</button>
+        <button className="btn btn-secondary" onClick={multiply} >*</button>
+        <button className="btn btn-danger" onClick={divide} >/</button>
         </div>
         <div>
-          <h4 className="mt-3 text-center">Result: {result}</h4>
+          <h4 className="mt-5 ">Result: {result}</h4>
         </div>
       </div>
     </>
   )
-  
 }
 
 export default App
