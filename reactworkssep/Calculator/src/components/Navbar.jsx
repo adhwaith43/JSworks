@@ -18,13 +18,7 @@ function Navbar() {
                 <a class="nav-link active" aria-current="page" href="#">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Skills</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Education</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Calculator</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
