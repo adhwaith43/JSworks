@@ -23,6 +23,10 @@ function Navbar() {
                 <Link to="/calculator">
                 <a class="nav-link active" aria-current="page" href="#">Calculator</a></Link>
               </li>
+              <li class="nav-item">
+                <Link to="/temperature">
+                <a class="nav-link active" aria-current="page" href="#">Temperature</a></Link>
+              </li>
             </ul>
           </div>
         </div>
