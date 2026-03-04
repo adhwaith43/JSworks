@@ -15,10 +15,10 @@ function Temperature_cal() {
     }
   return (
 
-    <div className='container bg-light'>
+    <div className='container text-center'>
         <input type="text" className='form-control mt-3 p-3' placeholder='enter Temp in deg celsius' onChange={input}/>
         <br />
-        <button className='btn btn-primary mt-3' onClick={convertToFarhenheit}><strong>=</strong></button>
+        <button className='btn btn-primary mt-3 ' onClick={convertToFarhenheit}><strong>=</strong></button>
         <br />
         <input type="text" className='form-control mt-3 p-3' placeholder='Temp in Faraheit' value={result}/>
     </div>
