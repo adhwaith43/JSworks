@@ -27,6 +27,10 @@ function Navbar() {
                 <Link to="/temperature">
                 <a class="nav-link active" aria-current="page" href="#">Temperature</a></Link>
               </li>
+              <li class="nav-item">
+                <Link to="/bmi">
+                <a class="nav-link active" aria-current="page" href="#">Bmi</a></Link>
+              </li>
             </ul>
           </div>
         </div>
