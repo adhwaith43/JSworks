@@ -7,6 +7,7 @@ import Calculator from './components/Calculator'
 import About from './components/About'
 import Navbar from './components/Navbar'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Temperature_cal from './components/Temperature_cal'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home/>}></Route>
           <Route path="/about" element={<About/>}></Route>
           <Route path="/calculator" element={<Calculator/>}></Route>
+          <Route path="/temperature" element={<Temperature_cal/>}></Route>
       </Routes>
       </BrowserRouter>
 
