@@ -14,7 +14,7 @@ function About() {
   //arrow function
 
   return (
-    <div>
+    <div className='container background-light mt-5 p-5 border border-2 rounded'>
       <div class="container-fluid bg-light mt-5 p-5">
         <h4 class="text-center mt-5">Full Stack Developer</h4>
         <div class="row mt-5">
