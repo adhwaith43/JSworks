@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Home from './components/Home'
 import Calculator from './components/Calculator'
 import About from './components/About'
 import Navbar from './components/Navbar'
@@ -9,13 +10,15 @@ import Navbar from './components/Navbar'
 function App() {
   return (
     <>
-      <Navbar/>
-      <div className='container background-light mt-5 p-5 border border-2 rounded'>
+      {/* <Navbar/>
       <About/>
-      </div>
-
-      <Calculator/>
-      
+      <Calculator/> */}
+      <BrowserRouter>
+      <Navbar/>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+      </Routes>
+      </BrowserRouter>
     </>
   )
 }
