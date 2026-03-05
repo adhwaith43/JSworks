@@ -1,31 +1,54 @@
-import CustomizeButton from "./components/CustomizeButton."
+import { useState } from "react"
 import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
 import Shortcuts from "./components/Shortcuts"
 import StoryGrid from "./components/StoryGrid"
+import CustomizePanel from "./components/CustomizePanel"
+import CustomizeButton from "./components/CustomizeButton"
 
 function App() {
-  return (
-    <div className="min-h-screen bg-[#2b2a33] text-white">
 
-      <div className="max-w-[1150px] mx-auto px-6 py-4">
+const [panelOpen,setPanelOpen] = useState(false)
+const [wallpaper,setWallpaper] = useState("")
 
-        <Header />
-        <SearchBar />
-        <Shortcuts />
+return (
 
-        <h2 className="mt-10 mb-4 text-lg font-semibold">
-          Thought-provoking stories
-        </h2>
+<div
+className="min-h-screen text-white bg-[#2b2a33] bg-cover bg-center"
+style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
+>
 
-        <StoryGrid />
+<Header/>
 
-      </div>
+<div className="max-w-[1150px] mx-auto px-6">
 
-      <CustomizeButton />
+<SearchBar/>
 
-    </div>
-  )
+<Shortcuts/>
+
+<h2 className="mt-10 mb-4 text-lg font-semibold">
+Thought-provoking stories
+</h2>
+
+<StoryGrid/>
+
+</div>
+
+<CustomizeButton
+open={panelOpen}
+setOpen={setPanelOpen}
+/>
+
+<CustomizePanel
+open={panelOpen}
+setOpen={setPanelOpen}
+setWallpaper={setWallpaper}
+/>
+
+</div>
+
+)
+
 }
 
 export default App
