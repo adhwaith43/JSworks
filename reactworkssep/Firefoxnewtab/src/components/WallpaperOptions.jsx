@@ -1,10 +1,24 @@
 const wallpapers=[
 
-"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-"https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-"https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3",
-"https://images.unsplash.com/photo-1557682250-33bd709cbe85",
-"https://images.unsplash.com/photo-1503264116251-35a269479413"
+{
+name:"Abstract",
+url:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+},
+
+{
+name:"Solid",
+url:"https://images.unsplash.com/photo-1557682250-33bd709cbe85"
+},
+
+{
+name:"Photograph",
+url:"https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+},
+
+{
+name:"Celestial",
+url:"https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3"
+}
 
 ]
 
@@ -31,11 +45,24 @@ return(
 {wallpapers.map((w,i)=>(
 <img
 key={i}
-src={w}
-onClick={()=>setWallpaper(w)}
-className="rounded-lg h-20 object-cover cursor-pointer"
+onClick={()=>setWallpaper(w.url)}
+className="cursor-pointer"
+>
+
+<img
+src={w.url}
+className="rounded-lg h-20 w-full object-cover"
 />
+
+<p className="text-xs mt-1 text-center">
+{w.name}
+</p>
+
+</div>
+
 ))}
+
+</div>
 
 <label className="border border-dashed h-20 flex items-center justify-center cursor-pointer">
 

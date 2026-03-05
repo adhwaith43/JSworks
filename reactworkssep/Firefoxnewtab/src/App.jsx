@@ -9,43 +9,12 @@ import CustomizePanel from "./components/CustomizePanel"
 function App(){
 
 const [panelOpen,setPanelOpen] = useState(false)
+const [wallpaper,setWallpaper] = useState("")
 
-const [wallpaper,setWallpaper] = useState(()=>{
-return localStorage.getItem("wallpaper") || ""
-})
-
-const [showShortcuts,setShowShortcuts] = useState(
-JSON.parse(localStorage.getItem("showShortcuts")) ?? true
-)
-
-const [shortcutRows,setShortcutRows] = useState(
-Number(localStorage.getItem("shortcutRows")) || 1
-)
-
-const [showStories,setShowStories] = useState(
-JSON.parse(localStorage.getItem("showStories")) ?? true
-)
-
-useEffect(()=>{
-localStorage.setItem("wallpaper",wallpaper)
-},[wallpaper])
-
-useEffect(()=>{
-localStorage.setItem("showShortcuts",showShortcuts)
-},[showShortcuts])
-
-useEffect(()=>{
-localStorage.setItem("shortcutRows",shortcutRows)
-},[shortcutRows])
-
-useEffect(()=>{
-localStorage.setItem("showStories",showStories)
-},[showStories])
-
-return(
+return (
 
 <div
-className="min-h-screen text-white bg-[#2b2a33] bg-cover bg-center"
+className="bg-[#2b2a33] text-white min-h-screen bg-cover bg-center"
 style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
 >
 
