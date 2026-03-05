@@ -1,8 +1,8 @@
-import {useEffect,useState} from "react"
+import { useEffect,useState } from "react"
 
 function useNews(){
 
-const [stories,setStories]=useState([])
+const [stories,setStories] = useState([])
 
 useEffect(()=>{
 

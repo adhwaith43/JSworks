@@ -3,15 +3,12 @@ import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
 import Shortcuts from "./components/Shortcuts"
 import StoryGrid from "./components/StoryGrid"
-import CustomizeButton from "./components/CustomizeButton"
 import CustomizePanel from "./components/CustomizePanel"
+import CustomizeButton from "./components/CustomizeButton"
 
-function App(){
+function App() {
 
 const [panelOpen,setPanelOpen] = useState(false)
-<<<<<<< HEAD
-const [wallpaper,setWallpaper] = useState("")
-=======
 
 /* wallpaper */
 const [wallpaper,setWallpaper] = useState(()=>{
@@ -33,7 +30,6 @@ useEffect(()=>{
 localStorage.setItem("wallpaper", wallpaper)
 },[wallpaper])
 
->>>>>>> 6af4567 (fix 2)
 
 return (
 
@@ -44,16 +40,10 @@ style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
 
 <Header/>
 
-<div className="max-w-[1150px] mx-auto px-6 relative z-10">
+<div className="max-w-[1150px] mx-auto px-6">
 
 <SearchBar/>
 
-<<<<<<< HEAD
-{showShortcuts && (
-<Shortcuts rows={shortcutRows}/>
-)}
-
-=======
 {/* shortcuts */}
 
 {showShortcuts && (
@@ -62,7 +52,6 @@ style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
 
 {/* stories */}
 
->>>>>>> 6af4567 (fix 2)
 {showStories && (
 <>
 <h2 className="mt-10 mb-4 text-lg font-semibold">
@@ -90,21 +79,12 @@ setOpen={setPanelOpen}
 open={panelOpen}
 setOpen={setPanelOpen}
 setWallpaper={setWallpaper}
-<<<<<<< HEAD
-setShowShortcuts={setShowShortcuts}
-showShortcuts={showShortcuts}
-setShortcutRows={setShortcutRows}
-shortcutRows={shortcutRows}
-setShowStories={setShowStories}
-showStories={showStories}
-=======
 showShortcuts={showShortcuts}
 setShowShortcuts={setShowShortcuts}
 shortcutRows={shortcutRows}
 setShortcutRows={setShortcutRows}
 showStories={showStories}
 setShowStories={setShowStories}
->>>>>>> 6af4567 (fix 2)
 />
 
 

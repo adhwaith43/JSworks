@@ -3,14 +3,23 @@ import useNews from "../hooks/useNews"
 
 function StoryGrid(){
 
-const stories=useNews()
+const stories = useNews()
 
 return(
 
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
-{stories.map((s)=>(
-<StoryCard key={s.id} story={s}/>
+{stories.map((story)=> (
+
+<StoryCard
+key={story.id}
+story={{
+title:story.title,
+source:story.news_site,
+image:story.image_url
+}}
+/>
+
 ))}
 
 </div>
