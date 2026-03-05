@@ -2,8 +2,7 @@ function StoryCard({story}){
 
 return(
 
-<div className="bg-[#3a3945] rounded-xl overflow-hidden hover:bg-[#44434f] transition">
-
+<div className="bg-[#3a3945] rounded-xl overflow-hidden hover:scale-[1.02] transition duration-200 cursor-pointer">
 <img
 src={story.image}
 alt={story.title}

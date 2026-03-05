@@ -15,3 +15,5 @@ className="w-[620px] bg-[#3a3945] border border-cyan-400 rounded-lg px-6 py-3 ou
 )
 
 }
+
+export default SearchBar

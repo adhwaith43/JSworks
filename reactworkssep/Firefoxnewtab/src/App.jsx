@@ -1,3 +1,9 @@
+import CustomizeButton from "./components/CustomizeButton."
+import Header from "./components/Header"
+import SearchBar from "./components/SearchBar"
+import Shortcuts from "./components/Shortcuts"
+import StoryGrid from "./components/StoryGrid"
+
 function App() {
   return (
     <div className="min-h-screen bg-[#2b2a33] text-white">
@@ -21,3 +27,5 @@ function App() {
     </div>
   )
 }
+
+export default App
