@@ -1,41 +1,30 @@
-const shortcuts = [
-  { name:"Inbox", icon:"📧"},
-  { name:"Spotify", icon:"🎧"},
-  { name:"HRM Nest", icon:"📂"},
-  { name:"Course", icon:"📘"},
-  { name:"LeetCode", icon:"💻"},
-  { name:"Netsratum", icon:"⚙️"},
-  { name:"Youtube", icon:"▶️"},
+const shortcuts=[
+"📧","🎧","📁","📘","💻","⚙️","▶️","🧠",
+"📊","📂","📅","🌐","📎","📌","📱","💡",
+"📷","📖","📰","📍","🧾","🧭","📁","📊",
+"🧑‍💻","🔧","📚","🎮","💬","🧩","🗂","📂"
 ]
 
-function Shortcuts(){
+function Shortcuts({rows}){
 
-  return(
+const visible=shortcuts.slice(0,rows*8)
 
-    <div className="flex flex-wrap justify-center gap-6 mb-10">
+return(
 
-      {shortcuts.map((item,index)=> (
+<div className="grid grid-cols-8 gap-6 max-w-[680px] mx-auto mb-10">
 
-        <div
-          key={index}
-          className="flex flex-col items-center text-sm cursor-pointer"
-        >
+{visible.map((s,i)=>(
+<div
+key={i}
+className="bg-[#3a3945] w-12 h-12 flex items-center justify-center rounded-lg hover:bg-[#444]"
+>
+{s}
+</div>
+))}
 
-          <div className="w-12 h-12 bg-[#3a3945] rounded-xl flex items-center justify-center text-xl hover:bg-[#4a4955]">
-            {item.icon}
-          </div>
+</div>
 
-          <span className="mt-1 text-xs text-gray-300">
-            {item.name}
-          </span>
-
-        </div>
-
-      ))}
-
-    </div>
-
-  )
+)
 
 }
 

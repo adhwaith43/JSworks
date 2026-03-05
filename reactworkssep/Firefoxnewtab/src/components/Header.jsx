@@ -9,7 +9,7 @@ src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.sv
 className="w-10"
 />
 
-<h1 className="text-2xl font-semibold tracking-tight">
+<h1 className="text-2xl font-semibold">
 Firefox
 </h1>
 
