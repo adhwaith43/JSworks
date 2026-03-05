@@ -6,7 +6,7 @@ return(
 <img
 src={story.image}
 alt={story.title}
-className="w-full h-40 object-cover"
+className="w-full h-38 object-cover"
 />
 
 <div className="p-4">

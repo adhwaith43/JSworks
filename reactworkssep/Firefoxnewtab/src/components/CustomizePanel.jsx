@@ -39,31 +39,25 @@ return(
 
 <div
 ref={panelRef}
-className="w-[330px] bg-[#3a3945] h-full p-6 overflow-y-auto text-gray-200"
+className="w-[432px] bg-[#3a3945] h-full p-6 overflow-y-auto text-gray-200"
 >
 
 {/* Header */}
+<div className="flex flex-col items-end mb-3">
+<button onClick={()=>setOpen(false)}>✕</button>
+</div>
 
-<div className="flex justify-between items-center mb-6">
 
-<h2 className="text-lg font-semibold">
-Wallpapers
-</h2>
+<div className="flex justify-between items-start mb-6">
 
-<div className="flex items-center gap-4">
 
-<button
-onClick={()=>{
-setWallpaper("")
-localStorage.removeItem("wallpaper")
-}}
-className="text-xs text-cyan-400 hover:underline"
->
+<h2 className="text-s font-semibold">Wallpapers</h2>
+
+<div className="flex flex-col items-end">
+
+
+<button className="text-xs text-cyan-400 mt-2">
 Reset to default
-</button>
-
-<button onClick={()=>setOpen(false)}>
-✕
 </button>
 
 </div>

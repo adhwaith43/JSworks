@@ -39,17 +39,17 @@ const visibleShortcuts = shortcuts.slice(0, rows * 8)
 
 return(
 
-<div className="grid grid-cols-8 gap-6 max-w-[680px] mx-auto mb-12">
+<div className="grid grid-cols-8 gap-20 max-w-[680px] mx-auto mb-12">
 
 {visibleShortcuts.map((s,i)=>(
 
 <div key={i} className="flex flex-col items-center gap-1">
 
-<div className="bg-[#3a3945] w-12 h-12 rounded-xl flex items-center justify-center hover:bg-[#444] transition">
+<div className="bg-[#3a3945] w-[64px] h-[64px] rounded-xl flex items-center justify-center hover:bg-[#444] transition">
 {s.icon}
 </div>
 
-<p className="text-xs text-gray-300 text-center w-16 truncate">
+<p className="text-[13px] text-gray-300 text-center w-16 truncate">
 {s.name}
 </p>
 
