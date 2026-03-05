@@ -14,7 +14,7 @@ const [wallpaper,setWallpaper] = useState("")
 return (
 
 <div
-className="min-h-screen text-white bg-[#2b2a33] bg-cover bg-center"
+className="bg-[#2b2a33] text-white min-h-screen bg-cover bg-center"
 style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
 >
 
