@@ -9,7 +9,31 @@ import CustomizePanel from "./components/CustomizePanel"
 function App(){
 
 const [panelOpen,setPanelOpen] = useState(false)
+<<<<<<< HEAD
 const [wallpaper,setWallpaper] = useState("")
+=======
+
+/* wallpaper */
+const [wallpaper,setWallpaper] = useState(()=>{
+return localStorage.getItem("wallpaper") || ""
+})
+
+/* shortcuts toggle */
+const [showShortcuts,setShowShortcuts] = useState(true)
+
+/* shortcut rows */
+const [shortcutRows,setShortcutRows] = useState(1)
+
+/* stories toggle */
+const [showStories,setShowStories] = useState(true)
+
+
+/* store wallpaper */
+useEffect(()=>{
+localStorage.setItem("wallpaper", wallpaper)
+},[wallpaper])
+
+>>>>>>> 6af4567 (fix 2)
 
 return (
 
@@ -24,10 +48,21 @@ style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
 
 <SearchBar/>
 
+<<<<<<< HEAD
 {showShortcuts && (
 <Shortcuts rows={shortcutRows}/>
 )}
 
+=======
+{/* shortcuts */}
+
+{showShortcuts && (
+<Shortcuts rows={shortcutRows}/>
+)}
+
+{/* stories */}
+
+>>>>>>> 6af4567 (fix 2)
 {showStories && (
 <>
 <h2 className="mt-10 mb-4 text-lg font-semibold">
@@ -40,22 +75,38 @@ Thought-provoking stories
 
 </div>
 
+
+{/* customize button */}
+
 <CustomizeButton
 open={panelOpen}
 setOpen={setPanelOpen}
 />
 
+
+{/* customize panel */}
+
 <CustomizePanel
 open={panelOpen}
 setOpen={setPanelOpen}
 setWallpaper={setWallpaper}
+<<<<<<< HEAD
 setShowShortcuts={setShowShortcuts}
 showShortcuts={showShortcuts}
 setShortcutRows={setShortcutRows}
 shortcutRows={shortcutRows}
 setShowStories={setShowStories}
 showStories={showStories}
+=======
+showShortcuts={showShortcuts}
+setShowShortcuts={setShowShortcuts}
+shortcutRows={shortcutRows}
+setShortcutRows={setShortcutRows}
+showStories={showStories}
+setShowStories={setShowStories}
+>>>>>>> 6af4567 (fix 2)
 />
+
 
 </div>
 
