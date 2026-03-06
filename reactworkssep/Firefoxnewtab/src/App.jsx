@@ -24,6 +24,8 @@ const [shortcutRows,setShortcutRows] = useState(1)
 /* stories toggle */
 const [showStories,setShowStories] = useState(true)
 
+const [search,setSearch] = useState("")
+
 
 /* store wallpaper */
 useEffect(()=>{
@@ -40,9 +42,9 @@ style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
 
 <Header/>
 
-<div className="max-w-[1150px] mx-auto px-6">
+<div className="max-w-[1150px] mx-auto px-6 pb-20">
 
-<SearchBar/>
+<SearchBar search={search} setSearch={setSearch}/>
 
 {/* shortcuts */}
 
@@ -58,7 +60,8 @@ style={{backgroundImage: wallpaper ? `url(${wallpaper})` : ""}}
 Thought-provoking stories
 </h2>
 
-<StoryGrid/>
+<StoryGrid search={search}/>
+
 </>
 )}
 

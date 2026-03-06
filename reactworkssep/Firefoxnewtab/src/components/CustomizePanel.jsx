@@ -35,11 +35,10 @@ if(!open) return null
 
 return(
 
-<div className="fixed inset-0 flex justify-end z-50">
-
+<div className="fixed inset-0 bg-black/20 flex justify-end z-50">
 <div
 ref={panelRef}
-className="w-[432px] bg-[#3a3945] h-full p-6 overflow-y-auto text-gray-200"
+className="w-[432px] bg-[#3a3945] h-full p-6 overflow-y-auto firefox-panel"
 >
 
 {/* Header */}
@@ -110,7 +109,7 @@ showShortcuts ? "translate-x-5" : ""
 <select
 value={shortcutRows}
 onChange={(e)=>setShortcutRows(Number(e.target.value))}
-className="bg-[#2b2a33] text-sm px-2 py-1 rounded mb-6 mt-2"
+className="bg-[#2b2a33] text-sm px-2 py-1 rounded mb-6 mt-2 "
 >
 
 <option value={1}>1 row</option>

@@ -1,25 +1,20 @@
-import StoryCard from "./StoryCard"
 import useNews from "../hooks/useNews"
+import StoryCard from "./StoryCard"
 
-function StoryGrid(){
+function StoryGrid({search}){
 
 const stories = useNews()
 
+const filteredStories = stories.filter((story)=>
+story.title.toLowerCase().includes(search.toLowerCase())
+)
+
 return(
 
-<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-{stories.map((story)=> (
-
-<StoryCard
-key={story.id}
-story={{
-title:story.title,
-source:story.news_site,
-image:story.image_url
-}}
-/>
-
+{filteredStories.map((story)=>(
+<StoryCard key={story.id} story={story}/>
 ))}
 
 </div>

@@ -1,16 +1,24 @@
-function SearchBar(){
+function SearchBar({search,setSearch}){
 
 return(
 
-<div className="flex justify-center mb-8">
-    
-  
+<div className="flex justify-center mb-10">
+
+<div className="flex items-center bg-[#3a3945]/80 rounded-lg px-4 py-2 w-[650px]">
+
+<img
+src="https://www.google.com/favicon.ico"
+className="w-5 h-5 mr-3"
+/>
 
 <input
-type="text"
+value={search}
+onChange={(e)=>setSearch(e.target.value)}
 placeholder="Search with Google or enter address"
-className="w-[582px] py-3 bg-[#3a3945] border border-cyan-400 rounded-lg px-6 outline-none"
+className="bg-transparent outline-none w-full"
 />
+
+</div>
 
 </div>
 

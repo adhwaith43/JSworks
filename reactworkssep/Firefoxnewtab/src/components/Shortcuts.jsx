@@ -39,7 +39,7 @@ const visibleShortcuts = shortcuts.slice(0, rows * 8)
 
 return(
 
-<div className="grid grid-cols-8 gap-20 max-w-[680px] mx-auto mb-12">
+<div className="grid grid-cols-8 gap-10 max-w-[680px] mx-auto mb-12">
 
 {visibleShortcuts.map((s,i)=>(
 
