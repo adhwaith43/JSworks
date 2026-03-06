@@ -55,7 +55,13 @@ className="w-[432px] bg-[#3a3945] h-full p-6 overflow-y-auto firefox-panel"
 <div className="flex flex-col items-end">
 
 
-<button className="text-xs text-cyan-400 mt-2">
+<button
+onClick={()=>{
+setWallpaper("")
+localStorage.removeItem("wallpaper")
+}}
+className="text-xs text-cyan-400 hover:underline"
+>
 Reset to default
 </button>
 
